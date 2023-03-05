@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_blood_bank/views/create_account.dart';
+import 'package:smart_blood_bank/views/nav_bar_home.dart';
 import 'package:smart_blood_bank/views/resetting_password.dart';
 import '../consts/colors.dart';
 import '../consts/const_texts.dart';
@@ -122,14 +123,18 @@ class _LoginState extends State<Login> {
                     containerButtonn(
                       buttonText: 'Sign In',
                       myOnTap: () {
-                        if (formKey.currentState!.validate()) {}
+                        if (formKey.currentState!.validate()) {
+                          numberController.clear();
+                          passwordController.clear();
+                          Get.to(() => const NavBarHome());
+                        }
                       },
                     ),
                     const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
                         Get.to(
-                          () => const ResettinPassword(),
+                          () => ResettinPassword(),
                         );
                       },
                       child: Text(

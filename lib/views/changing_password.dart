@@ -73,7 +73,7 @@ class ChnaingPassword extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.to(
-                      () => const ResettinPassword(),
+                      () => ResettinPassword(),
                     );
                   },
                   child: Text(
