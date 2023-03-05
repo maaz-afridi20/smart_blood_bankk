@@ -68,8 +68,11 @@ class _CreateAccountState extends State<CreateAccount> {
                       myvalidator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'enter password';
-                        } else if (passwordController.text.length < 8) {
-                          return "Password should be at least 8 characters";
+                        } else if (!passwordController.text.contains(
+                              RegExp('[!@#%^&*()-._]'),
+                            ) ||
+                            passwordController.text.length < 8) {
+                          return 'length should be 8 and must contains special characters';
                         }
                       },
                       hinText: 'enter password',
@@ -120,7 +123,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         if (myformkey.currentState!.validate()) {
                           phoneController.clear();
                           passwordController.clear();
-                          Get.to(() => const NavBarHome());
+                          // Get.to(() => const NavBarHome());
                         }
                       },
                     ),
