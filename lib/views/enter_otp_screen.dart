@@ -98,7 +98,7 @@ class EnterOtpScreen extends StatelessWidget {
                   onTap: () {
                     Get.to(() => const Login());
                   },
-                  child: const ContainerButton(buttonText: 'Verify'),
+                  child: containerButtonn(buttonText: 'Verify'),
                 ),
               ],
             ),

@@ -39,9 +39,10 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
-                CustomTextField(hintText: 'enter phone number'),
+                myCustomTextfield(
+                    hinText: 'enter phone number', validatorValue: 'Enter phone number'),
                 const SizedBox(height: 12),
-                CustomTextField(hintText: 'enter password'),
+                myCustomTextfield(hinText: 'enter password', validatorValue: 'Enter password'),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -56,7 +57,7 @@ class Login extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const CreateAccount());
+                        Get.to(() => CreateAccount());
                       },
                       child: Text(
                         register,
@@ -71,10 +72,11 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
-                    onTap: () {
-                      Get.to(() => const NavBarHome());
-                    },
-                    child: const ContainerButton(buttonText: 'Sign In')),
+                  onTap: () {
+                    Get.to(() => const NavBarHome());
+                  },
+                  child: containerButtonn(buttonText: 'Sign In'),
+                ),
                 const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () {

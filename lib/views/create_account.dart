@@ -10,81 +10,90 @@ import '../consts/const_texts.dart';
 import '../consts/text_style.dart';
 
 class CreateAccount extends StatelessWidget {
-  const CreateAccount({super.key});
+  CreateAccount({super.key});
+
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  final myformkey = GlobalKey<FormState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Wellcome To Smart Blood Bank',
-                    style: customTextStyle(
-                      size: 16,
-                      color: blackk,
-                      weight: FontWeight.w600,
-                      // family: 'light',
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Creat your account',
-                    style: customTextStyle(
-                      size: 12,
-                      color: lightgrey,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  CustomTextField(hintText: 'enter phone number'),
-                  const SizedBox(height: 12),
-                  CustomTextField(hintText: 'enter password'),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        alreadyAccount,
-                        style: customTextStyle(
-                          color: lightgrey,
-                          size: 12,
-                          weight: FontWeight.bold,
-                        ),
+        child: Form(
+          key: myformkey,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Wellcome To Smart Blood Bank',
+                      style: customTextStyle(
+                        size: 16,
+                        color: blackk,
+                        weight: FontWeight.w600,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(() => const Login());
-                        },
-                        child: Text(
-                          loginn,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Creat your account',
+                      style: customTextStyle(
+                        size: 12,
+                        color: lightgrey,
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                    myCustomTextfield(
+                      validatorValue: 'enter phone number',
+                      hinText: 'enter phone number',
+                      myController: phoneController,
+                    ),
+                    const SizedBox(height: 12),
+                    myCustomTextfield(
+                      validatorValue: 'enter password',
+                      hinText: 'enter password',
+                      myController: passwordController,
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          alreadyAccount,
                           style: customTextStyle(
-                            color: bluecolor,
+                            color: lightgrey,
                             size: 12,
                             weight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(() => const EnterOtpScreen());
-                    },
-                    child: const ContainerButton(buttonText: 'Sign Up'),
-                  ),
-                  // Text(
-                  //   'cheking',
-                  //   style: GoogleFonts.poppins(
-                  //     textStyle: TextStyle(fontSize: 20),
-                  //   ),
-                  // ),
-                ],
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const Login());
+                          },
+                          child: Text(
+                            loginn,
+                            style: customTextStyle(
+                              color: bluecolor,
+                              size: 12,
+                              weight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    containerButtonn(
+                        buttonText: 'Sign Up',
+                        myOnTap: () {
+                          if (myformkey.currentState!.validate()) {}
+                        }),
+                  ],
+                ),
               ),
             ),
           ),

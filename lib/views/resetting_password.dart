@@ -38,13 +38,15 @@ class ResettinPassword extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 50),
-                CustomTextField(hintText: 'enter phone number'),
+                myCustomTextfield(
+                    hinText: 'enter phone number', validatorValue: 'phone number missing'),
+                // CustomTextField(hintText: 'enter phone number'),
                 const SizedBox(height: 50),
                 GestureDetector(
                   onTap: () {
                     Get.to(() => const ChangePassword());
                   },
-                  child: const ContainerButton(
+                  child: containerButtonn(
                     buttonText: 'Sign In',
                   ),
                 ),

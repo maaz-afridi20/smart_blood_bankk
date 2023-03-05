@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_blood_bank/reusable/custom_text_field.dart';
 import 'package:smart_blood_bank/views/nav_bar_home.dart';
 import '../consts/colors.dart';
 import '../consts/text_style.dart';
 import '../reusable/container_button.dart';
-import '../reusable/custom_text_field.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});
@@ -33,15 +33,17 @@ class ChangePassword extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 60),
-                    CustomTextField(hintText: 'Enter new passwod'),
+                    myCustomTextfield(
+                        hinText: 'Enter new password', validatorValue: 'enter new password'),
                     const SizedBox(height: 12),
-                    CustomTextField(hintText: 'Confirm new passwod'),
+                    myCustomTextfield(
+                        hinText: 'Confirm new password', validatorValue: 'confirm new password'),
                     const SizedBox(height: 24),
                     GestureDetector(
                         onTap: () {
                           Get.to(() => const NavBarHome());
                         },
-                        child: const ContainerButton(buttonText: 'Change password')),
+                        child: containerButtonn(buttonText: 'Change password')),
                     const SizedBox(height: 20),
                   ],
                 ),

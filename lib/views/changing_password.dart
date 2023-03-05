@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_blood_bank/reusable/custom_text_field.dart';
 import 'package:smart_blood_bank/views/resetting_password.dart';
 import '../consts/colors.dart';
 import '../consts/const_texts.dart';
 import '../consts/text_style.dart';
 import '../reusable/container_button.dart';
-import '../reusable/custom_text_field.dart';
 
 class ChnaingPassword extends StatelessWidget {
   const ChnaingPassword({super.key});
@@ -38,9 +38,10 @@ class ChnaingPassword extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
-                CustomTextField(hintText: 'enter phone number'),
+                myCustomTextfield(
+                    hinText: 'enter phone number', validatorValue: 'phone number missing'),
                 const SizedBox(height: 12),
-                CustomTextField(hintText: 'enter password'),
+                myCustomTextfield(hinText: 'enter password', validatorValue: 'password missing'),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -64,7 +65,7 @@ class ChnaingPassword extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                const ContainerButton(buttonText: 'Sign In'),
+                containerButtonn(buttonText: 'Sign In'),
                 const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () {
