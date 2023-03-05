@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_blood_bank/views/create_account.dart';
-import 'package:smart_blood_bank/views/nav_bar_home.dart';
 import 'package:smart_blood_bank/views/resetting_password.dart';
 import '../consts/colors.dart';
 import '../consts/const_texts.dart';
@@ -10,7 +9,10 @@ import '../reusable/container_button.dart';
 import '../reusable/custom_text_field.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  final TextEditingController numberController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,13 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 myCustomTextfield(
+                  myController: numberController,
+                  myKeyboardtype: TextInputType.number,
                   hinText: 'enter phone number',
                 ),
                 const SizedBox(height: 12),
                 myCustomTextfield(
+                  myController: passwordController,
                   hinText: 'enter password',
                 ),
                 const SizedBox(height: 16),
@@ -74,11 +79,9 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(() => const NavBarHome());
-                  },
-                  child: containerButtonn(buttonText: 'Sign In'),
+                containerButtonn(
+                  buttonText: 'Sign In',
+                  myOnTap: () {},
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(

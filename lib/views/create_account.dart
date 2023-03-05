@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_blood_bank/reusable/container_button.dart';
 import 'package:smart_blood_bank/reusable/custom_text_field.dart';
-import 'package:smart_blood_bank/views/enter_otp_screen.dart';
 import 'package:smart_blood_bank/views/login.dart';
 import 'package:smart_blood_bank/views/nav_bar_home.dart';
 
@@ -10,14 +9,19 @@ import '../consts/colors.dart';
 import '../consts/const_texts.dart';
 import '../consts/text_style.dart';
 
-class CreateAccount extends StatelessWidget {
+class CreateAccount extends StatefulWidget {
   CreateAccount({super.key});
 
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  @override
+  State<CreateAccount> createState() => _CreateAccountState();
+}
 
+class _CreateAccountState extends State<CreateAccount> {
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final myformkey = GlobalKey<FormState>();
-  bool isLoading = true;
+
+  bool passToggle = false;
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +68,23 @@ class CreateAccount extends StatelessWidget {
                       myvalidator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'enter password';
+                        } else if (passwordController.text.length < 8) {
+                          return "Password should be at least 8 characters";
                         }
                       },
                       hinText: 'enter password',
+                      obsecure: passToggle,
                       myController: passwordController,
+                      sufficIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            passToggle = !passToggle;
+                          });
+                        },
+                        child: passToggle
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off_outlined),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -83,7 +100,7 @@ class CreateAccount extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => const Login());
+                            Get.to(() => Login());
                           },
                           child: Text(
                             loginn,
@@ -101,6 +118,8 @@ class CreateAccount extends StatelessWidget {
                       buttonText: 'Sign Up',
                       myOnTap: () {
                         if (myformkey.currentState!.validate()) {
+                          phoneController.clear();
+                          passwordController.clear();
                           Get.to(() => const NavBarHome());
                         }
                       },

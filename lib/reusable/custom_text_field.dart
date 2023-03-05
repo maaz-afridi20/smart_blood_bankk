@@ -8,16 +8,20 @@ Widget myCustomTextfield({
   myController,
   myKeyboardtype,
   myvalidator,
+  sufficIcon,
+  obsecure = false,
 }) {
   return TextFormField(
     validator: myvalidator,
     controller: myController,
     keyboardType: myKeyboardtype,
+    obscureText: obsecure,
     decoration: InputDecoration(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      hintText: hinText,
+      labelText: hinText,
+      suffixIcon: sufficIcon,
       hintStyle: customTextStyle(
         color: lightgrey,
       ),

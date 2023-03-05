@@ -96,7 +96,7 @@ class EnterOtpScreen extends StatelessWidget {
                 const SizedBox(height: 19),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const Login());
+                    Get.to(() => Login());
                   },
                   child: containerButtonn(buttonText: 'Verify'),
                 ),
