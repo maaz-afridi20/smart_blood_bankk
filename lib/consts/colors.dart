@@ -8,3 +8,5 @@ const bluecolor = Color(0xff40bfff);
 const whitecolor = Color(0xffffffff);
 const otpbracketcolor = Color(0xffd9d9d9);
 const drawerBackground = Color(0xfffcfcfc);
+const profileBackgroundcolor = Color(0xfff5f5f5);
+const listileColor = Color(0xfffefefe);
