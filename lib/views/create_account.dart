@@ -16,7 +16,7 @@ class CreateAccount extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
 
   final myformkey = GlobalKey<FormState>();
-  bool isLoading = false;
+  bool isLoading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +49,7 @@ class CreateAccount extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     myCustomTextfield(
+                      myKeyboardtype: TextInputType.number,
                       validatorValue: 'enter phone number',
                       hinText: 'enter phone number',
                       myController: phoneController,

@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import '../consts/colors.dart';
 import '../consts/text_style.dart';
 
-Widget myCustomTextfield({hinText, myController, required validatorValue}) {
+Widget myCustomTextfield({
+  hinText,
+  myController,
+  required validatorValue,
+  myKeyboardtype,
+}) {
   return TextFormField(
     validator: (value) {
       if (value == null || value.isEmpty) {
         return '$validatorValue';
-      } else {
-        return '';
+      } else if (value.contains('@#%&!')) {
+        return 'Strong password';
       }
     },
     controller: myController,
+    keyboardType: myKeyboardtype,
     decoration: InputDecoration(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
