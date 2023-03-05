@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:smart_blood_bank/reusable/container_button.dart';
 import 'package:smart_blood_bank/reusable/custom_text_field.dart';
 import 'package:smart_blood_bank/views/login.dart';
-import 'package:smart_blood_bank/views/nav_bar_home.dart';
 
 import '../consts/colors.dart';
 import '../consts/const_texts.dart';
