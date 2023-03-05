@@ -39,9 +39,12 @@ class ChnaingPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 myCustomTextfield(
-                    hinText: 'enter phone number', validatorValue: 'phone number missing'),
+                  hinText: 'enter phone number',
+                ),
                 const SizedBox(height: 12),
-                myCustomTextfield(hinText: 'enter password', validatorValue: 'password missing'),
+                myCustomTextfield(
+                  hinText: 'enter password',
+                ),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

@@ -4,6 +4,7 @@ import 'package:smart_blood_bank/reusable/container_button.dart';
 import 'package:smart_blood_bank/reusable/custom_text_field.dart';
 import 'package:smart_blood_bank/views/enter_otp_screen.dart';
 import 'package:smart_blood_bank/views/login.dart';
+import 'package:smart_blood_bank/views/nav_bar_home.dart';
 
 import '../consts/colors.dart';
 import '../consts/const_texts.dart';
@@ -49,14 +50,22 @@ class CreateAccount extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     myCustomTextfield(
+                      myvalidator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'enter phone number';
+                        }
+                      },
                       myKeyboardtype: TextInputType.number,
-                      validatorValue: 'enter phone number',
                       hinText: 'enter phone number',
                       myController: phoneController,
                     ),
                     const SizedBox(height: 12),
                     myCustomTextfield(
-                      validatorValue: 'enter password',
+                      myvalidator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'enter password';
+                        }
+                      },
                       hinText: 'enter password',
                       myController: passwordController,
                     ),
@@ -89,10 +98,13 @@ class CreateAccount extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     containerButtonn(
-                        buttonText: 'Sign Up',
-                        myOnTap: () {
-                          if (myformkey.currentState!.validate()) {}
-                        }),
+                      buttonText: 'Sign Up',
+                      myOnTap: () {
+                        if (myformkey.currentState!.validate()) {
+                          Get.to(() => const NavBarHome());
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

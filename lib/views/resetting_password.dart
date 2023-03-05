@@ -39,7 +39,8 @@ class ResettinPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 myCustomTextfield(
-                    hinText: 'enter phone number', validatorValue: 'phone number missing'),
+                  hinText: 'enter phone number',
+                ),
                 // CustomTextField(hintText: 'enter phone number'),
                 const SizedBox(height: 50),
                 GestureDetector(

@@ -6,17 +6,11 @@ import '../consts/text_style.dart';
 Widget myCustomTextfield({
   hinText,
   myController,
-  required validatorValue,
   myKeyboardtype,
+  myvalidator,
 }) {
   return TextFormField(
-    validator: (value) {
-      if (value == null || value.isEmpty) {
-        return '$validatorValue';
-      } else if (value.contains('@#%&!')) {
-        return 'Strong password';
-      }
-    },
+    validator: myvalidator,
     controller: myController,
     keyboardType: myKeyboardtype,
     decoration: InputDecoration(

@@ -34,10 +34,12 @@ class ChangePassword extends StatelessWidget {
                     ),
                     const SizedBox(height: 60),
                     myCustomTextfield(
-                        hinText: 'Enter new password', validatorValue: 'enter new password'),
+                      hinText: 'Enter new password',
+                    ),
                     const SizedBox(height: 12),
                     myCustomTextfield(
-                        hinText: 'Confirm new password', validatorValue: 'confirm new password'),
+                      hinText: 'Confirm new password',
+                    ),
                     const SizedBox(height: 24),
                     GestureDetector(
                         onTap: () {
