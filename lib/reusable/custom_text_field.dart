@@ -10,18 +10,22 @@ Widget myCustomTextfield({
   myvalidator,
   sufficIcon,
   obsecure = false,
+  preficIcon,
+  onchanged,
 }) {
   return TextFormField(
     validator: myvalidator,
     controller: myController,
     keyboardType: myKeyboardtype,
     obscureText: obsecure,
+    onChanged: onchanged,
     decoration: InputDecoration(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
       ),
       labelText: hinText,
       suffixIcon: sufficIcon,
+      prefixIcon: preficIcon,
       hintStyle: customTextStyle(
         color: lightgrey,
       ),

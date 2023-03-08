@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_blood_bank/reusable/container_button.dart';
@@ -21,6 +22,19 @@ class _CreateAccountState extends State<CreateAccount> {
   final myformkey = GlobalKey<FormState>();
 
   bool passToggle = false;
+
+  Country selectedCountry = Country(
+    phoneCode: "92",
+    countryCode: "PK",
+    e164Sc: 0,
+    geographic: true,
+    level: 1,
+    name: "Pakistan",
+    example: "Pakistan",
+    displayName: "Pakistan",
+    displayNameNoCountryCode: "PK",
+    e164Key: "",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +67,59 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     const SizedBox(height: 40),
                     myCustomTextfield(
-                      myvalidator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'enter phone number';
-                        }
-                      },
-                      myKeyboardtype: TextInputType.number,
-                      hinText: 'enter phone number',
-                      myController: phoneController,
-                    ),
+                        onchanged: (value) {
+                          setState(() {
+                            phoneController.text = value;
+                          });
+                        },
+                        preficIcon: InkWell(
+                          onTap: () {
+                            showCountryPicker(
+                              context: context,
+                              countryListTheme: const CountryListThemeData(
+                                bottomSheetHeight: 500,
+                              ),
+                              onSelect: (value) {
+                                setState(
+                                  () {
+                                    selectedCountry = value;
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          child: Text(
+                            '${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}',
+                            style: customTextStyle(
+                              size: 18,
+                              color: blackk,
+                              weight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        myvalidator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'enter phone number';
+                          }
+                        },
+                        myKeyboardtype: TextInputType.number,
+                        hinText: 'enter phone number',
+                        myController: phoneController,
+                        sufficIcon: phoneController.text.length > 9
+                            ? Container(
+                                height: 20,
+                                width: 20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: greenColor,
+                                ),
+                                child: const Icon(
+                                  Icons.done,
+                                  color: whitecolor,
+                                  size: 20,
+                                ),
+                              )
+                            : null),
                     const SizedBox(height: 12),
                     myCustomTextfield(
                       myvalidator: (value) {

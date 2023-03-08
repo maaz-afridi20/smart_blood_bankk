@@ -37,6 +37,7 @@ dependencies:
   sms_autofill: ^2.3.0
   timer_count_down: ^2.2.2
   google_fonts: ^4.0.3
+  country_picker: any
 
 dev_dependencies:
 
