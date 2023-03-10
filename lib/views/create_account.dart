@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_blood_bank/reusable/container_button.dart';
+import 'package:smart_blood_bank/reusable/country_picker.dart';
 import 'package:smart_blood_bank/reusable/custom_text_field.dart';
 import 'package:smart_blood_bank/views/login.dart';
 
@@ -20,24 +21,14 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final myformkey = GlobalKey<FormState>();
-
   bool passToggle = false;
-
-  Country selectedCountry = Country(
-    phoneCode: "92",
-    countryCode: "PK",
-    e164Sc: 0,
-    geographic: true,
-    level: 1,
-    name: "Pakistan",
-    example: "Pakistan",
-    displayName: "Pakistan",
-    displayNameNoCountryCode: "PK",
-    e164Key: "",
-  );
+  MyCountryPickerClass selectCountry = MyCountryPickerClass();
 
   @override
   Widget build(BuildContext context) {
+    phoneController.selection = TextSelection.fromPosition(
+      TextPosition(offset: phoneController.text.length),
+    );
     return Scaffold(
       body: SafeArea(
         child: Form(
@@ -82,18 +73,24 @@ class _CreateAccountState extends State<CreateAccount> {
                               onSelect: (value) {
                                 setState(
                                   () {
-                                    selectedCountry = value;
+                                    selectCountry.selectedCountry = value;
                                   },
                                 );
                               },
                             );
                           },
-                          child: Text(
-                            '${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}',
-                            style: customTextStyle(
-                              size: 18,
-                              color: blackk,
-                              weight: FontWeight.bold,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 12,
+                            ),
+                            child: Text(
+                              '${selectCountry.selectedCountry.flagEmoji} + ${selectCountry.selectedCountry.phoneCode}',
+                              style: customTextStyle(
+                                size: 18,
+                                color: blackk,
+                                weight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -105,13 +102,14 @@ class _CreateAccountState extends State<CreateAccount> {
                         myKeyboardtype: TextInputType.number,
                         hinText: 'enter phone number',
                         myController: phoneController,
-                        sufficIcon: phoneController.text.length > 9
+                        sufficIcon: phoneController.text.length >= 8
                             ? Container(
+                                margin: const EdgeInsets.all(10),
                                 height: 20,
                                 width: 20,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: greenColor,
+                                  color: Colors.green,
                                 ),
                                 child: const Icon(
                                   Icons.done,
